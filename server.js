@@ -1,5 +1,7 @@
 const app = require('./app');
-
-const server = app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+const port= 3001;
+const host= '127.0.0.1';
+ 
+const server = app.listen(port,host,  () => {
+    console.log(`Node server is Listining to ${server.address().port}`);
 });
