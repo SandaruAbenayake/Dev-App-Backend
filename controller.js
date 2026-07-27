@@ -1,13 +1,4 @@
-const users =[
-    {
-        id : 1,
-        name : 'sasa',
-    },
-    {
-        id : 2,
-        name: 'Dada',
-    }
-];
+const User = require("./model");
 
 const getUsers = (cb) =>{
     cb(users);
