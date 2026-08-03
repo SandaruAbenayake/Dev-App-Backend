@@ -1,24 +1,18 @@
-const express = require('express');
-const app = express();
-const cors = require('cors');
+require('dotenv').config();
+const pool = require('./model');
+const app = require('./app');
 const port= 3001;
 const host= '127.0.0.1';
-const mongoose = require('mongoose'); 
- 
 
-app.use(cors());
-app.use(express.json());
-
-const url ="mongodb+srv://msandaru:mr4UORjOgUphLxpV@cluster0.bzw47zp.mongodb.net/?appName=Cluster0";
-
-const  connect = async () => {
+const connect = async () => {
     try{
-      await mongoose.connect (url);
-      console.log("connect to monogoDB Database")
+      const connection = await pool.getConnection();
+      connection.release();
+      console.log("connected to MySQL database")
     }
     catch(error)
     {
-      console.log("Error : ERROR");
+      console.log("Error connecting to MySQL:", error.message);
     }
 }
 
